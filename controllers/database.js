@@ -16,10 +16,8 @@ var pool = mysql.createPool({
 var pool = mysql.createPool({
   host: process.env.RDS_HOSTNAME,
   user: process.env.RDS_USERNAME,
-  password: "Ao21Ao21",
+  password: process.env.RDS_PASSWORD,
   port: process.env.RDS_PORT
-  connectionLimit: 10,
-  supportBigNumbers: true
 });
 
 
