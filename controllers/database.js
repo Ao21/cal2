@@ -21,7 +21,7 @@ var pool = mysql.createPool({
 });
 
 
-var client = app.createConnection({
+var client = mysql.createConnection({
   host: process.env.RDS_HOSTNAME,
   user: process.env.RDS_USERNAME,
   password: process.env.RDS_PASSWORD,
@@ -95,33 +95,7 @@ async.series([
     client.query("DROP TABLE IF EXISTS timetable", callback);
   },
   function drop(callback) {
-    client.query("CREATE TABLE timetable (' +
-                         'uos_name VARCHAR(40), ' +
-                         'AlphaDigit VARCHAR(40), ' +
-                         'sessionid VARCHAR(40), ' +
-                         'Label_code VARCHAR(40), ' +
-                         'Part_code VARCHAR(40), ' +
-                         'Part_title VARCHAR(40), ' +
-                         'class_code VARCHAR(40), ' +
-                         'class_title VARCHAR(40), ' +
-                         'nominal_size VARCHAR(40), ' +
-                         'size_limit VARCHAR(40), ' +
-                         'is_closed VARCHAR(40), ' +
-                         'start_day VARCHAR(40), ' +
-                         'end_day VARCHAR(40), ' +
-                         'frequency_description VARCHAR(40), ' +
-                         'day_of_week VARCHAR(40), ' +
-                         'start_time VARCHAR(40), ' +
-                         'end_time VARCHAR(40), ' +
-                         'venue_name VARCHAR(255), ' +
-                         'bookingid VARCHAR(40), ' +
-                         'family_name VARCHAR(40), ' +
-                         'given_names VARCHAR(40), ' +
-                         'usyd_intranet_login VARCHAR(40), ' +
-                         'building_code VARCHAR(40), ' +
-                         'capacity VARCHAR(40), ' +
-                         'ID MEDIUMINT NOT NULL AUTO_INCREMENT, ' +
-                         'PRIMARY KEY(ID))",callback);
+    client.query("CREATE TABLE timetable ('+'uos_name VARCHAR(40), '+'AlphaDigit VARCHAR(40), '+'sessionid VARCHAR(40), '+'Label_code VARCHAR(40), '+'Part_code VARCHAR(40), '+'Part_title VARCHAR(40), '+'class_code VARCHAR(40), '+'class_title VARCHAR(40), '+'nominal_size VARCHAR(40), '+'size_limit VARCHAR(40), '+'is_closed VARCHAR(40), '+'start_day VARCHAR(40), '+'end_day VARCHAR(40), '+'frequency_description VARCHAR(40), '+'day_of_week VARCHAR(40), '+'start_time VARCHAR(40), '+'end_time VARCHAR(40), '+'venue_name VARCHAR(255), '+'bookingid VARCHAR(40), '+'family_name VARCHAR(40), '+'given_names VARCHAR(40), '+'usyd_intranet_login VARCHAR(40), '+'building_code VARCHAR(40), '+'capacity VARCHAR(40), '+'ID MEDIUMINT NOT NULL AUTO_INCREMENT, '+'PRIMARY KEY(ID))",callback);
   },
   function clear(callback) {
     client.query(sql, [city], callback);
