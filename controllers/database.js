@@ -16,7 +16,7 @@ var pool = mysql.createPool({
 var pool = mysql.createPool({
   host: process.env.RDS_HOSTNAME,
   user: process.env.RDS_USERNAME,
-  password: process.env.RDS_PASSWORD,
+  password: "Ao21Ao21",
   port: process.env.RDS_PORT
   connectionLimit: 10,
   supportBigNumbers: true
@@ -30,6 +30,7 @@ exports.getRecords = function(city, callback) {
   pool.getConnection(function(err, connection) {
     if(err) { console.log(err); callback(true); return; }
     // make the query
+    client.query('USE mynode_db');
     connection.query(sql, [city], function(err, results) {
       if(err) { console.log(err); callback(true); return; }
       callback(false, results);
