@@ -11,6 +11,7 @@ var db = require('../controllers/database');
   db.getRecords("San Francisco", function(err, results) {
     if(err) { res.send(500,"Server Error"); return;}
     // Respond with results as JSON
+    console.log(results[0]);
     res.render('data', { data:results });
   });
 };
