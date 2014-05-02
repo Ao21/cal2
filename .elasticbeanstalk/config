@@ -1,0 +1,15 @@
+[global]
+ApplicationName=timetables
+AwsCredentialFile=C:\Users\ro\.elasticbeanstalk\aws_credential_file
+DevToolsEndpoint=git.elasticbeanstalk.ap-southeast-2.amazonaws.com
+EnvironmentName=timetables-env
+EnvironmentType=SingleInstance
+InstanceProfileName=aws-elasticbeanstalk-ec2-role
+OptionSettingFile=C:\Users\ro\projects\timetables\.elasticbeanstalk\optionsettings.timetables-env
+RdsDeletionPolicy=Delete
+RdsEnabled=Yes
+RdsSourceSnapshotName=
+Region=ap-southeast-2
+ServiceEndpoint=https://elasticbeanstalk.ap-southeast-2.amazonaws.com
+SolutionStack=32bit Amazon Linux 2014.02 v1.0.1 running Node.js
+
