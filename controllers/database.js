@@ -1,4 +1,6 @@
 var mysql = require('mysql'),async = require('async');
+
+
 /*
 var pool = mysql.createPool({
   host: 'localhost',
@@ -16,7 +18,6 @@ var pool = mysql.createPool({
   user: process.env.RDS_USERNAME,
   password: process.env.RDS_PASSWORD,
   port: process.env.RDS_PORT
-  database: 'mynode_db',
   connectionLimit: 10,
   supportBigNumbers: true
 });
