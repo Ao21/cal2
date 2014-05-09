@@ -1,12 +1,14 @@
 doctype xml
+entries
+  - each d in data
+    entry
+      uosName=d.uos_name
+      AlphaDigit=d.AlphaDigit
+      start_day=d.start_day
+      end_day=d.end_day
+      start_time=d.start_time
+      end_time=d.end_time
+      frequency=d.frequency_description
+      day_of_week=d.day_of_week
+      venue_name=d.venue_name
 
-- each d in data
-  entry
-    uosName=d.uos_name
-    AlphaDigit=d.AlphaDigit
-    start_day=d.start_day
-    end_day=d.end_day
-    start_time=d.start_time
-    end_time=d.end_time
-
-    

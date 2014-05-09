@@ -46,6 +46,7 @@ app.configure('production', function() {
 
 app.get('/', routes.index);
 app.get('/data', uploadcsv.data);
+app.get('/timetable', uploadcsv.timetable);
 app.post('/uploadcsv', uploadcsv.upload);
 
 http.createServer(app).listen(app.get('port'), function(){

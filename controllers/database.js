@@ -1,8 +1,8 @@
 var mysql = require('mysql'),async = require('async');
 
 
-/*
-var pool = mysql.createPool({
+
+var client = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   port: '3306',
@@ -11,7 +11,7 @@ var pool = mysql.createPool({
   connectionLimit: 10,
   supportBigNumbers: true
 });
-*/
+/*
 
 var pool = mysql.createPool({
   host: process.env.RDS_HOSTNAME,
@@ -28,6 +28,7 @@ var client = mysql.createConnection({
   port: process.env.RDS_PORT
   
 })
+
 
 async.series([
   function connect(callback) {
@@ -80,6 +81,8 @@ async.series([
   }
 });
 
+*/
+
 
 // Get records from a city
 exports.getRecords = function(city, callback) {
@@ -98,8 +101,6 @@ var sql = "SELECT * FROM timetable";
   });
 
 */
-
-
 
 
 async.series([
@@ -124,19 +125,61 @@ async.series([
 
 
 
+};
 
 
 
+// Get records from a city
+exports.getRecordsByVenue = function(venue, callback) {
+var sql = "SELECT * FROM timetable WHERE venue_name = ?";
+  /*
+  
+  // get a connection from the pool
+  pool.getConnection(function(err, connection) {
+    if(err) { console.log(err); callback(true); return; }
+    // make the query
+    client.query('USE mynode_db');
+    connection.query(sql, [city], function(err, results) {
+      if(err) { console.log(err); callback(true); return; }
+      callback(false, results);
+    });
+  });
+
+*/
 
 
+async.series([
+
+  function clear(cb) {
+    client.query(sql, [venue], function(err, results){
+      callback(false,results)
+    });
+  }
 
 
-
-
-
+], function(err,results){
+   if (err) {
+    console.log('Exception initializing database.');
+    throw err;
+  } else {
+    console.log('Database initialization complete.');
+    
+  }
+});
 
 
 };
+
+
+
+
+
+
+
+
+
+
+
 
 
 exports.insertRecords = function(city, callback) {
@@ -166,6 +209,7 @@ async.series([
   }
 });
 
+};
 
 
 /*
@@ -215,5 +259,7 @@ async.series([
 });
 
   });
-*/
+
 };
+
+*/

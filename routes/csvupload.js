@@ -8,15 +8,21 @@ var db = require('../controllers/database');
 
  exports.data = function(req, res){
   
-  db.getRecords("San Francisco", function(err, results) {
+  db.getRecordsByVenue("Wilkinson 209 Studio", function(err, results) {
     if(err) { res.send(500,"Server Error"); return;}
     // Respond with results as JSON
-    console.log(results[0]);
     res.render('data', { data:results });
   });
 };
 
-
+ exports.timetable = function(req, res){
+  
+  db.getRecordsByVenue("Wilkinson 209 Studio", function(err, results) {
+    if(err) { res.send(500,"Server Error"); return;}
+    // Respond with results as JSON
+    res.render('timetable', { data:results });
+  });
+};
 
   
 exports.upload = function(req, res){
