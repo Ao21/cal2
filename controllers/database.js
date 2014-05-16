@@ -2,7 +2,7 @@ var mysql = require('mysql'),
     async = require('async');
 
 
-/*
+
 var client = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -13,7 +13,7 @@ var client = mysql.createConnection({
     supportBigNumbers: true
 });
 
-
+/*
 var pool = mysql.createPool({
   host: process.env.RDS_HOSTNAME,
   user: process.env.RDS_USERNAME,
@@ -21,7 +21,7 @@ var pool = mysql.createPool({
   port: process.env.RDS_PORT
 });
 
-*/
+
 var client = mysql.createConnection({
     host: process.env.RDS_HOSTNAME,
     user: process.env.RDS_USERNAME,
@@ -30,7 +30,7 @@ var client = mysql.createConnection({
 
 })
 
-
+*/
 
 // Get records from a city
 exports.getRecords = function(city, callback) {

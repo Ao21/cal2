@@ -97,8 +97,8 @@
       };
 
       updateHeading();
-      var timerId = setInterval(updateHeading(), 60000);
-      var timerId = setInterval(updateLine(), 30000);
+      var timerId = setInterval(updateHeading, 60000);
+      var timerId = setInterval(updateLine, 30000);
 
 
 
