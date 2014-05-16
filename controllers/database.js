@@ -31,6 +31,7 @@ var client = mysql.createConnection({
 })
 
 
+
 // Get records from a city
 exports.getRecords = function(city, callback) {
     var sql = "SELECT * FROM timetable";
@@ -78,41 +79,6 @@ exports.getRecords = function(city, callback) {
 
 // Get records from a city
 exports.getRecordsByVenue = function(venue, callback) {
-    var sql = "SELECT * FROM timetable WHERE venue_name = ?";
-    /*
-  
-  // get a connection from the pool
-  pool.getConnection(function(err, connection) {
-    if(err) { console.log(err); callback(true); return; }
-    // make the query
-    client.query('USE mynode_db');
-    connection.query(sql, [city], function(err, results) {
-      if(err) { console.log(err); callback(true); return; }
-      callback(false, results);
-    });
-  });
-
-*/
-
-
-    async.series([
-
-        function clear(cb) {
-            client.query(sql, [venue], function(err, results) {
-                callback(false, results)
-            });
-        }
-
-
-    ], function(err, results) {
-        if (err) {
-            console.log('Exception initializing database.');
-            throw err;
-        } else {
-            console.log('Database initialization complete.');
-
-        }
-    });
 
 
 };

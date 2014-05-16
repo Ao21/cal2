@@ -24,23 +24,13 @@ exports.data = function(req, res) {
 
 exports.timetable = function(req, res) {
 
-    db.getRecordsByVenue("Wilkinson 262 General Access Laboratory", function(err, results) {
-        if (err) {
-            res.send(500, "Server Error");
-            return;
-        }
-        // Respond with results as JSON
-        res.render('timetable', {
-            data: results
-        });
-    });
+    res.render('timetable');
+
+
 };
 
 
 exports.upload = function(req, res) {
-    console.log(req.app);
-
-
 
     csv()
         .from(fs.createReadStream(req.files.csvFile.path))
