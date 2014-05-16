@@ -2,7 +2,7 @@ var mysql = require('mysql'),
     async = require('async');
 
 
-
+/*
 var client = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -13,13 +13,15 @@ var client = mysql.createConnection({
     supportBigNumbers: true
 });
 
-/*
+
 var pool = mysql.createPool({
   host: process.env.RDS_HOSTNAME,
   user: process.env.RDS_USERNAME,
   password: process.env.RDS_PASSWORD,
   port: process.env.RDS_PORT
 });
+
+*/
 
 
 var client = mysql.createConnection({
@@ -30,7 +32,7 @@ var client = mysql.createConnection({
 
 })
 
-*/
+
 
 // Get records from a city
 exports.getRecords = function(city, callback) {
@@ -53,7 +55,7 @@ exports.getRecords = function(city, callback) {
 
     async.series([
 
-        function clear(cb) {
+        function ab(cb) {
             client.query(sql, [city], function(err, results) {
                 callback(false, results)
             });
@@ -102,35 +104,6 @@ exports.insertRecords = function(city, callback) {
         },
         function use_db(callback) {
             client.query('USE mynode_db', callback);
-        },
-        function create_table(callback) {
-            client.query('CREATE TABLE timetable (' +
-                'uos_name VARCHAR(40), ' +
-                'AlphaDigit VARCHAR(40), ' +
-                'sessionid VARCHAR(40), ' +
-                'Label_code VARCHAR(40), ' +
-                'Part_code VARCHAR(40), ' +
-                'Part_title VARCHAR(40), ' +
-                'class_code VARCHAR(40), ' +
-                'class_title VARCHAR(40), ' +
-                'nominal_size VARCHAR(40), ' +
-                'size_limit VARCHAR(40), ' +
-                'is_closed VARCHAR(40), ' +
-                'start_day VARCHAR(40), ' +
-                'end_day VARCHAR(40), ' +
-                'frequency_description VARCHAR(40), ' +
-                'day_of_week VARCHAR(40), ' +
-                'start_time VARCHAR(40), ' +
-                'end_time VARCHAR(40), ' +
-                'venue_name VARCHAR(255), ' +
-                'bookingid VARCHAR(40), ' +
-                'family_name VARCHAR(40), ' +
-                'given_names VARCHAR(40), ' +
-                'usyd_intranet_login VARCHAR(40), ' +
-                'building_code VARCHAR(40), ' +
-                'capacity VARCHAR(40), ' +
-                'ID MEDIUMINT NOT NULL AUTO_INCREMENT, ' +
-                'PRIMARY KEY(ID))', callback);
         },
         function drop(callback) {
             client.query("DROP TABLE IF EXISTS timetable", callback);
