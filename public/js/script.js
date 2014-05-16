@@ -1,3 +1,4 @@
+var xml;
 $.ajax({
     url: '/data',
     success: function(e) {
