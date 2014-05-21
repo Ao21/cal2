@@ -1,0 +1,37 @@
+extends layout
+
+block content
+
+  header
+    h1.date 9.00
+    h1.title Timetable
+
+  .content
+    .time
+      .line
+        h1 Now
+    .timeLine
+      each d,index in rooms
+        div(class="day",id!=data[index][0].room.replace(/\D/g, '').trim())
+          div.heading
+          each e in data[index]
+            - var sSize = ''
+            case true
+              when e.segmentCount > 0 && e.segmentCount <= 12
+               - sSize = 'small'
+              when e.segmentCount > 12 && e.segmentCount <= 24
+                - sSize = 'medium'
+              when e.segmentCount > 24
+                - sSize = 'large'
+            if(e.e)
+              div(n=e.roomNo,class="block event "+sSize,style='width:'+(e.segmentCount*11.666666)+'px')
+                h1= e.starTime
+                  span= ' to ' + e.endTime
+                p= e.e[0].uosName
+            else
+              div(n=e.roomNo,class="block "+sSize,style='width:'+(e.segmentCount*11.666666)+'px')
+                h1= e.starTime
+                  span= ' to ' + e.endTime
+                p All Access
+  script(type='text/javascript').
+    var tData = JSON.parse('!{dataJson}');

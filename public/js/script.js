@@ -24,11 +24,11 @@ var noEvent = true,
     flag = false;
 
 
+createWeek()
 
 
 
 
-//getEvents(roomArray);
 
 
 function getEvents(results, rooms) {
@@ -157,7 +157,6 @@ function momentToDay(day) {
     }
 }
 
-createWeek()
 
 
 function dynamicSort(property) {

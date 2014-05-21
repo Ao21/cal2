@@ -1,11 +1,11 @@
 var mysql = require('mysql'),
     async = require('async');
 
-
 /*
+
 var client = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
+    user: 'root'
     port: '3306',
     password: 'Ao21Ao21',
     database: 'mynode_db',
@@ -31,21 +31,6 @@ var client = mysql.createConnection({
 // Get records from a city
 exports.getRecords = function(city, callback) {
     var sql = "SELECT * FROM timetable";
-    /*
-  
-  // get a connection from the pool
-  pool.getConnection(function(err, connection) {
-    if(err) { console.log(err); callback(true); return; }
-    // make the query
-    client.query('USE mynode_db');
-    connection.query(sql, [city], function(err, results) {
-      if(err) { console.log(err); callback(true); return; }
-      callback(false, results);
-    });
-  });
-
-*/
-
 
     async.series([
 
