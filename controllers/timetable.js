@@ -34,49 +34,51 @@ exports.getTimetable = function(req, res) {
         for (var i = results.length - 1; i >= 0; i--) {
             var result = results[i];
 
+            if (result.AlphaDigit != 'AlphaDigit') {
 
-            var thisweek = moment().startOf('week');
-            var thisweek2 = moment().startOf('week');
-            var day = dayToDayNumber(result.day_of_week);
-            var dayThisWeek = thisweek.weekday(day);
-            var dayThisWeek2 = thisweek2.weekday(day);
+                var thisweek = moment().startOf('week');
+                var thisweek2 = moment().startOf('week');
+                var day = dayToDayNumber(result.day_of_week);
+                var dayThisWeek = thisweek.weekday(day);
+                var dayThisWeek2 = thisweek2.weekday(day);
 
-            var sT = result.start_time.split(":");
-            var eT = result.end_time.split(":");
+                var sT = result.start_time.split(":");
+                var eT = result.end_time.split(":");
 
-            sT = dayThisWeek.hours(sT[0]).minutes(sT[1]);
-            eT = dayThisWeek2.hours(eT[0]).minutes(eT[1]);
+                sT = dayThisWeek.hours(sT[0]).minutes(sT[1]);
+                eT = dayThisWeek2.hours(eT[0]).minutes(eT[1]);
 
-            var a = moment(sT),
-                b = moment(eT),
-                len = b.diff(a, 'minutes');
-
-
-
-            var startDate = moment(result.start_day, "DDMMYYYY");
-            var endDate = moment(result.end_day, "DDMMYYYY");
-            var dateRange = moment().range(startDate, endDate);
-
-            var venue = result.venue_name.trim();
+                var a = moment(sT),
+                    b = moment(eT),
+                    len = b.diff(a, 'minutes');
 
 
-            if (dateRange.contains(thisweek)) {
+
+                var startDate = moment(result.start_day, "DDMMYYYY");
+                var endDate = moment(result.end_day, "DDMMYYYY");
+                var dateRange = moment().range(startDate, endDate);
+
+                var venue = result.venue_name.trim();
 
 
-                xmlData.push({
-                    uosName: result.uos_name,
-                    alphaDigit: result.AlphaDigit,
-                    startDate: moment(result.start_day, "DDMMYYYY"),
-                    endDate: moment(result.end_day, "DDMMYYYY"),
-                    startTime: sT,
-                    endTime: eT,
-                    length: len,
-                    frequency: result.frequency,
-                    venue: venue,
-                    dayOfWeek: result.day_of_week,
-                    computedDay: dayThisWeek,
-                    range: moment().range(sT, eT)
-                });
+                if (dateRange.contains(thisweek)) {
+
+
+                    xmlData.push({
+                        uosName: result.uos_name,
+                        alphaDigit: result.AlphaDigit,
+                        startDate: moment(result.start_day, "DDMMYYYY"),
+                        endDate: moment(result.end_day, "DDMMYYYY"),
+                        startTime: sT,
+                        endTime: eT,
+                        length: len,
+                        frequency: result.frequency,
+                        venue: venue,
+                        dayOfWeek: result.day_of_week,
+                        computedDay: dayThisWeek,
+                        range: moment().range(sT, eT)
+                    });
+                }
             }
 
         };

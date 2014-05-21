@@ -5,7 +5,7 @@ var mysql = require('mysql'),
 
 var client = mysql.createConnection({
     host: 'localhost',
-    user: 'root'
+    user: 'root',
     port: '3306',
     password: 'Ao21Ao21',
     database: 'mynode_db',
@@ -16,7 +16,6 @@ var client = mysql.createConnection({
 
 */
 
-
 var client = mysql.createConnection({
     host: process.env.RDS_HOSTNAME,
     user: process.env.RDS_USERNAME,
@@ -25,6 +24,7 @@ var client = mysql.createConnection({
     database: 'mynode_db',
 
 })
+
 
 
 
