@@ -90,8 +90,9 @@ function getEvents(results, rooms) {
     };
 
     updateHeading();
-    var timerId = setInterval(updateHeading, 60000);
-    var timerId = setInterval(updateLine, 30000);
+    updateLine();
+    var timerId = setInterval(updateHeading, 10000);
+    var timerId = setInterval(updateLine, 10000);
 
 
 
@@ -366,8 +367,8 @@ function updateHeading() {
 
 
 function updateLine() {
-    var startTime = moment().hour(9),
-        endTime = moment().hour(21);
+    var startTime = moment().hour(9).minutes(0);
+    var endTime = moment().hour(21).minutes(0);
     var time = $('.time').width();
     var d = endTime.diff(startTime, 'minutes');
     //every minute is 1680 divived by minutes
@@ -375,7 +376,8 @@ function updateLine() {
 
 
     var now = moment();
-    $('h1.date').html(now.format('h.mm'))
+
+    $('h1.date').html(now.format('h.mm'));
 
     if (now.isAfter(startTime) && now.isBefore(endTime)) {
         var linePoint = now.diff(startTime, 'minutes') * minuteLength;
