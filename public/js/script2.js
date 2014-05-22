@@ -12,10 +12,11 @@ function updateHeading() {
 
         var now = moment();
         var html = "";
-        html += "<div class='heading'><h1>Room " + tData[i][0].roomNo + "</h1><p>" + tData[i][0].room.replace('Wilkinson', "").replace(/[0-9]/g, '') + "<br>";
+        html += "<h1>Room " + tData[i][0].roomNo + "</h1><p>" + tData[i][0].room.replace('Wilkinson', "").replace(/[0-9]/g, '') + "<br>";
         var room = tData[i];
         for (var x = 0; x < room.length; x++) {
             var r = moment().range(room[x].range.start, room[x].range.end)
+            console.log(r);
             if (r.contains(now)) {
                 if (room[x].e) {
                     html += '<span class="occupied">Occupied</span> till ' + room[x].endTime;
@@ -27,7 +28,7 @@ function updateHeading() {
             }
 
         };
-        html += '</p></div>';
+        html += '</p>';
         //a.push(html)
         var idSel = '#' + tData[i][0].roomNo;
 
