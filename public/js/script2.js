@@ -53,7 +53,7 @@ function updateLine() {
 
     var now = moment();
 
-    $('h1.date').html(now.format('h.mm'));
+    $('h1.date').html(now.format('h.mmA'));
 
     if (now.isAfter(startTime) && now.isBefore(endTime)) {
         var linePoint = now.diff(startTime, 'minutes') * minuteLength;
