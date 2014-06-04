@@ -50,10 +50,6 @@ exports.getRecords = function(city, callback) {
 
         }
     });
-
-
-
-
 };
 
 
@@ -63,6 +59,30 @@ exports.getRecordsByVenue = function(venue, callback) {
 
 
 };
+
+
+exports.getAllRooms = function(records, callback) {
+    var sql = "SELECT venue_name FROM timetable";
+
+    async.series([
+
+        function ab(cb) {
+            client.query(sql, [records], function(err, results) {
+                callback(false, results)
+
+            });
+        }
+
+    ], function(err, results) {
+        if (err) {
+            console.log('Exception initializing database.');
+            throw err;
+        } else {
+            console.log('Database initialization complete.');
+
+        }
+    });
+}
 
 
 

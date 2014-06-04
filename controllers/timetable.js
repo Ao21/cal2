@@ -68,7 +68,7 @@ exports.getTimetable = function(req, res) {
                         uosName: result.uos_name,
                         alphaDigit: result.AlphaDigit,
                         startDate: moment(result.start_day, "DDMMYYYY"),
-                        endDate: moment(result.end_day, "DDMMYYYY"),
+                        endDate: moment(result.end_day, "DDMMYYYY").hours(23),
                         startTime: sT,
                         endTime: eT,
                         length: len,

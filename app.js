@@ -10,7 +10,8 @@ var express = require('express'),
     fs = require('fs'),
     mysql = require('mysql'),
     async = require('async'),
-    path = require('path');
+    path = require('path'),
+    db = require('./controllers/database');
 
 var app = express();
 
@@ -51,6 +52,8 @@ app.get('/data', uploadcsv.data);
 app.get('/timetable', uploadcsv.timetable);
 app.get('/timetable2', timeTab.getTimetable);
 app.post('/uploadcsv', uploadcsv.upload);
+app.get('/upload', routes.upload);
+app.get('/createTimetable', routes.createATimetable);
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log("Express server listening on port " + app.get('port'));
