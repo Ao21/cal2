@@ -55,7 +55,7 @@ exports.getTimetable = function(req, res) {
 
 
                 var startDate = moment(result.start_day, "DDMMYYYY");
-                var endDate = moment(result.end_day, "DDMMYYYY");
+                var endDate = moment(result.end_day, "DDMMYYYY").hours(23);
                 var dateRange = moment().range(startDate, endDate);
 
                 var venue = result.venue_name.trim();
@@ -63,6 +63,7 @@ exports.getTimetable = function(req, res) {
 
                 if (dateRange.contains(thisweek)) {
 
+                    console.log('hi');
 
                     xmlData.push({
                         uosName: result.uos_name,
@@ -200,7 +201,6 @@ exports.getTimetable = function(req, res) {
 
 
 
-
         for (var i = 0; i < xmlData.length; i++) {
             if (xmlData[i].dayOfWeek === days[d] && xmlData[i].venue == room) {
                 tempArray.push(xmlData[i]);
@@ -213,6 +213,7 @@ exports.getTimetable = function(req, res) {
 
 
     function createTimeLineForDay(day, events, room) {
+
 
         var segmentCount = 0,
             daySegments = 144,
