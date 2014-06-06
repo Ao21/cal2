@@ -244,6 +244,10 @@ function createTimeLineForDay(day, events, room) {
             //Make an event and go to end of event
             block.starTime = evs[0].startTime.format('ha');
             block.endTime = evs[0].endTime.format('ha');
+
+            block.starTimeA = evs[0].startTime;
+            block.endTimeA = evs[0].endTime;
+
             block.range = moment().range(evs[0].startTime, evs[0].endTime);
             block.e = evs;
 
@@ -274,6 +278,9 @@ function createTimeLineForDay(day, events, room) {
                 block.endTime = nextEvent.startTime.format('ha');
                 block.range = moment().range(currentTime, nextEvent.startTime);
 
+                block.starTimeA = currentTime;
+                block.endTimeA = nextEvent.startTime;
+
                 var difference = nextEvent.startTime.diff(currentTime, 'minutes');
                 addToSegment = difference / 5;
                 addToMinutes = difference;
@@ -282,6 +289,10 @@ function createTimeLineForDay(day, events, room) {
             } else {
                 block.starTime = currentTime.format('ha');
                 block.endTime = moment(currentTime).set('hours', 21).format('ha');
+
+                block.starTimeA = currentTime;
+                block.endTimeA = moment(currentTime).set('hours', 21);
+
                 block.range = moment().range(currentTime, moment(currentTime).set('hours', 21));
 
                 block.segmentCount = daySegments - segmentCount;

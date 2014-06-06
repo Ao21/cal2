@@ -48,6 +48,7 @@ exports.getTimetable = function(req, res) {
                 sT = dayThisWeek.hours(sT[0]).minutes(sT[1]);
                 eT = dayThisWeek2.hours(eT[0]).minutes(eT[1]);
 
+
                 var a = moment(sT),
                     b = moment(eT),
                     len = b.diff(a, 'minutes');
@@ -63,7 +64,6 @@ exports.getTimetable = function(req, res) {
 
                 if (dateRange.contains(thisweek)) {
 
-                    console.log('hi');
 
                     xmlData.push({
                         uosName: result.uos_name,
@@ -283,6 +283,8 @@ exports.getTimetable = function(req, res) {
                     block.endTime = nextEvent.startTime.format('ha');
                     block.range = moment().range(currentTime, nextEvent.startTime);
 
+
+
                     var difference = nextEvent.startTime.diff(currentTime, 'minutes');
                     addToSegment = difference / 5;
                     addToMinutes = difference;
@@ -292,6 +294,8 @@ exports.getTimetable = function(req, res) {
                     block.starTime = currentTime.format('ha');
                     block.endTime = moment(currentTime).set('hours', 21).format('ha');
                     block.range = moment().range(currentTime, moment(currentTime).set('hours', 21));
+
+
 
                     block.segmentCount = daySegments - segmentCount;
                     segmentCount = segmentCount = daySegments;
