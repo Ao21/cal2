@@ -27,7 +27,7 @@ exports.getTimetable = function(req, res) {
 
     function go() {
 
-        var today = moment().day();
+        var today = moment("24/03/2014", "DD/MM/YYYY");
 
 
         db.getRecords("", function(err, results) {
@@ -224,6 +224,7 @@ exports.getTimetable = function(req, res) {
                 tempArray.push(xmlData[i]);
             }
         };
+
         createTimeLineForDay(days[d], tempArray, room, today);
     }
 
@@ -242,6 +243,7 @@ exports.getTimetable = function(req, res) {
 
         //Get Starting Time
         var thisweek = moment(today).startOf('week');
+        console.log(thisweek);
         var day = dayToDayNumber(day);
         var currentTime = thisweek.weekday(day);
         currentTime.set('hours', 9);
