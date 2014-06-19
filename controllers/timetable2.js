@@ -21,11 +21,18 @@ exports.getTimetable = function(req, res) {
             return;
         }
         // Respond with results as JSON
-        go();
+        console.log(JSON.parse(results[0].rooms));
+        var r = JSON.parse(results[0].rooms);
+        var l = [];
+        for (var i = r.length - 1; i >= 0; i--) {
+            l.push(r[i].room);
+        };
+        console.log(l);
+        go(l);
 
     });
 
-    function go() {
+    function go(rooms) {
 
         var today = moment("24/03/2014", "DD/MM/YYYY");
 
@@ -36,7 +43,7 @@ exports.getTimetable = function(req, res) {
                 return;
             }
             // Respond with results as JSON
-            getEvents(results, roomArray, today);
+            getEvents(results, rooms, today);
 
         });
     }
@@ -112,7 +119,7 @@ exports.getTimetable = function(req, res) {
         res.render('timetable2', {
             dataJson: JSON.stringify(tData),
             data: tData,
-            rooms: roomArray
+            rooms: rooms
         });
 
 
@@ -243,7 +250,6 @@ exports.getTimetable = function(req, res) {
 
         //Get Starting Time
         var thisweek = moment(today).startOf('week');
-        console.log(thisweek);
         var day = dayToDayNumber(day);
         var currentTime = thisweek.weekday(day);
         currentTime.set('hours', 9);

@@ -46,6 +46,9 @@ header.header h1.title {
 .small h1 span {
     display:none
 }
+.small p span {
+    display:none
+}
 .heading {
     width:215px;
     float:left

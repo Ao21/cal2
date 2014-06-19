@@ -30,8 +30,8 @@ html
                 div(n=e.roomNo,class="block event "+sSize,style='width:'+(e.segmentCount*11.666666)+'px')
                   h1= e.starTime
                     span= ' to ' + e.endTime
-                  p=e.e[0].alphaDigit + ' '
-                    span=e.e[0].uosName
+                  p=e.e[0].uosName + ' '
+                    span=e.e[0].alphaDigit
               else
                 div(n=e.roomNo,class="block "+sSize,style='width:'+(e.segmentCount*11.666666)+'px')
                   h1= e.starTime
