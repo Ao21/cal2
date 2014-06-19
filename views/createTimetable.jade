@@ -1,7 +1,42 @@
 extends layout
 
 block content
+  link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap.min.css')
+  link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap-theme.min.css')
+  .container
+    h1= title
+    p Welcome to #{title}
 
-  h1= title
-  p Welcome to #{title}
+    form
+      div.form-group
+        label Name Of Timetable
+        input.form-control#tName
+      div.form-group
+        label Select a Room
+        select.form-control#rooms
+          each d in data
+            if d.venue_name
+              option(value=d.venue_name)=d.venue_name
+
+      div.form-group
+        button.button.btn.btn-primary#addRoom Add Room
+
+    h1 Rooms
+    table.table#selectedRooms
+      thead
+        th Currently Selected
+      tbody
+    button.button.btn.btn-secondary#submit Create Timetable
+
+
+
+
+  
+  script(src='/js/jq.js')
+  script(src='/js/vendors.js')
+  script(type='text/javascript').
+    var tData = JSON.parse('!{dataJson}');
+    tData = _.uniq(tData);
+  script(src='/js/createTimetable.js')
+  
   

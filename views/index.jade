@@ -1,9 +1,33 @@
 extends layout
 
 block content
+  link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap.min.css')
+  link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap-theme.min.css')
+  .container
+    h1= title
+    p Welcome to #{title}
 
-  h1= title
-  p Welcome to #{title}
-  form(action="uploadcsv", method="post", enctype="multipart/form-data")
-    input(type="file", name="csvFile")
-    button(type="submit") Submit
+
+    h1 Timetables
+    table.table
+      thead
+        th Active Timetables
+      tbody
+        if data
+          each d in data
+            tr
+              td
+                a(href="tables/"+d.ID)= d.name
+
+
+
+
+
+  
+  script(src='/js/jq.js')
+  script(src='/js/vendors.js')
+  script(type='text/javascript').
+    var tData = JSON.parse('!{dataJson}');
+    tData = _.uniq(tData);
+  
+  

@@ -6,6 +6,7 @@ var express = require('express'),
     routes = require('./routes'),
     uploadcsv = require('./routes/csvupload'),
     timeTab = require('./controllers/timetable'),
+    timeTab2 = require('./controllers/timetable2'),
     http = require('http'),
     fs = require('fs'),
     mysql = require('mysql'),
@@ -54,6 +55,9 @@ app.get('/timetable2', timeTab.getTimetable);
 app.post('/uploadcsv', uploadcsv.upload);
 app.get('/upload', routes.upload);
 app.get('/createTimetable', routes.createATimetable);
+app.post('/createTimetable', routes.createT);
+
+app.get('/tables/:id', timeTab2.getTimetable);
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log("Express server listening on port " + app.get('port'));

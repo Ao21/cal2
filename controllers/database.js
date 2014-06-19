@@ -2,7 +2,7 @@ var mysql = require('mysql'),
     async = require('async');
 
 
-/*
+
 var client = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -13,9 +13,9 @@ var client = mysql.createConnection({
     supportBigNumbers: true
 });
 
+/*
 
 
-*/
 
 var client = mysql.createConnection({
     host: process.env.RDS_HOSTNAME,
@@ -25,7 +25,7 @@ var client = mysql.createConnection({
     database: 'mynode_db',
 
 })
-
+*/
 
 
 // Get records from a city
@@ -62,7 +62,7 @@ exports.getRecordsByVenue = function(venue, callback) {
 
 
 exports.getAllRooms = function(records, callback) {
-    var sql = "SELECT venue_name FROM timetable";
+    var sql = "SELECT DISTINCT venue_name FROM timetable";
 
     async.series([
 
@@ -84,6 +84,56 @@ exports.getAllRooms = function(records, callback) {
     });
 }
 
+
+
+exports.getTimetableById = function(id, callback) {
+    var sql = "SELECT * FROM ttimes WHERE id=?";
+
+    async.series([
+
+        function ab(cb) {
+            client.query(sql, id, function(err, results) {
+                callback(false, results)
+            });
+        }
+
+
+    ], function(err, results) {
+        if (err) {
+            console.log('Exception initializing database.');
+            throw err;
+        } else {
+            console.log('Database initialization complete.');
+
+        }
+    });
+
+
+}
+
+
+exports.getAllTimetables = function(city, callback) {
+    var sql = "SELECT * FROM ttimes";
+
+    async.series([
+
+        function ab(cb) {
+            client.query(sql, [city], function(err, results) {
+                callback(false, results)
+            });
+        }
+
+
+    ], function(err, results) {
+        if (err) {
+            console.log('Exception initializing database.');
+            throw err;
+        } else {
+            console.log('Database initialization complete.');
+
+        }
+    });
+};
 
 
 
@@ -112,6 +162,36 @@ exports.insertRecords = function(city, callback) {
         },
         function clear(callback) {
             client.query(sql2, [city], callback);
+        }
+
+
+    ], function(err, results) {
+        if (err) {
+            console.log('Exception initializing database.');
+            throw err;
+        } else {
+            console.log('Database initialization complete.');
+        }
+    });
+
+};
+
+
+
+exports.createTimetable = function(v, callback) {
+
+
+    var sql = "INSERT INTO tTimes SET ? ";
+    console.log(v);
+
+
+    async.series([
+
+        function go(callback) {
+            client.query('CREATE TABLE IF NOT EXISTS tTimes (' + 'name VARCHAR(255), ' + 'rooms TEXT, ' + 'ID MEDIUMINT NOT NULL AUTO_INCREMENT, ' + 'PRIMARY KEY(ID))', callback);
+        },
+        function clear(callback) {
+            client.query(sql, [v], callback);
         }
 
 

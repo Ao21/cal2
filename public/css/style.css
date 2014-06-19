@@ -5,6 +5,8 @@ body {
     background:#fafafa;
     font-family:"Replica Std Light", proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
     color:#333;
+}
+.limited {
     width:1920px;
     height: 1080px;
 }
