@@ -2725,6 +2725,22 @@ if (window.jQuery)(function($) {
     }), hb(!0)) : hb()
 }).call(this);
 
+
+
+
+
+
+
+/*====================================
+    =            Moment Range            =
+    ====================================*/
+
+
+
+/*-----  End of Moment Range  ------*/
+
+
+
 (function(root, factory) {
     if (typeof exports === 'object') {
         module.exports = factory(require('moment'));

@@ -1,5 +1,6 @@
 var db = require('../controllers/database');
 var moment = require('moment');
+require('moment-recur');
 
 // Get records from a city
 exports.getTimetable = function(req, res) {
@@ -34,7 +35,7 @@ exports.getTimetable = function(req, res) {
 
     function go(rooms) {
 
-        var today = moment("24/03/2014", "DD/MM/YYYY");
+        var today = moment("22/03/2014", "DD/MM/YYYY");
 
 
         db.getRecords("", function(err, results) {
@@ -90,7 +91,6 @@ exports.getTimetable = function(req, res) {
 
                 if (dateRange.contains(thisweek)) {
 
-
                     xmlData.push({
                         uosName: result.uos_name,
                         alphaDigit: result.AlphaDigit,
@@ -99,7 +99,7 @@ exports.getTimetable = function(req, res) {
                         startTime: sT,
                         endTime: eT,
                         length: len,
-                        frequency: result.frequency,
+                        frequency: result.frequency_description,
                         venue: venue,
                         dayOfWeek: result.day_of_week,
                         computedDay: dayThisWeek,
@@ -228,7 +228,20 @@ exports.getTimetable = function(req, res) {
 
         for (var i = 0; i < xmlData.length; i++) {
             if (xmlData[i].dayOfWeek === days[d] && xmlData[i].venue == room) {
-                tempArray.push(xmlData[i]);
+                var type = xmlData[i].frequency.trim();
+                if (type.localeCompare('Weekly') === 0) {
+                    console.log('Weekly');
+                } else if (type.localeCompare('Fortnightly') === 0) {
+                    var interval = moment(xmlData[i].startDate).recur().every(2).weeks();
+                    if (interval.matches(today)) {
+                        tempArray.push(xmlData[i]);
+
+                    }
+                } else {
+                    console.log('Once off');
+                    tempArray.push(xmlData[i]);
+
+                }
             }
         };
 
