@@ -402,6 +402,8 @@ function updateHeading(today) {
         var room = tData[i];
         for (var x = 0; x < room.length; x++) {
             var r = moment().range(room[x].range.start, room[x].range.end);
+            console.log(now);
+            console.log(r);
             if (r.contains(now)) {
                 if (room[x].e) {
                     html += '<span class="occupied">Occupied</span> till ' + room[x].endTime;
