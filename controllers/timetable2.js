@@ -37,7 +37,7 @@ exports.getTimetable = function(req, res) {
 
     function go(rooms) {
 
-        var today = moment();
+        var today = moment().tz("Australia/Sydney");
 
 
         db.getRecords("", function(err, results) {
@@ -65,8 +65,8 @@ exports.getTimetable = function(req, res) {
 
             if (result.AlphaDigit != 'AlphaDigit') {
 
-                var thisweek = moment(today).startOf('week');
-                var thisweek2 = moment(today).startOf('week');
+                var thisweek = moment(today).tz("Australia/Sydney").startOf('week');
+                var thisweek2 = moment(today).tz("Australia/Sydney").startOf('week');
                 var day = dayToDayNumber(result.day_of_week);
                 var dayThisWeek = thisweek.weekday(day);
                 var dayThisWeek2 = thisweek2.weekday(day);
@@ -89,7 +89,7 @@ exports.getTimetable = function(req, res) {
                 var endDate = moment(result.end_day, "DDMMYYYY").hours(23);
                 endDate = endDate.tz("Australia/Sydney");
 
-                var dateRange = moment(today).range(startDate, endDate);
+                var dateRange = moment().range(startDate, endDate);
 
                 var venue = result.venue_name.trim();
 
@@ -99,8 +99,8 @@ exports.getTimetable = function(req, res) {
                     xmlData.push({
                         uosName: result.uos_name,
                         alphaDigit: result.AlphaDigit,
-                        startDate: moment(result.start_day, "DDMMYYYY"),
-                        endDate: moment(result.end_day, "DDMMYYYY").hours(23),
+                        startDate: moment(result.start_day, "DDMMYYYY").tz("Australia/Sydney"),
+                        endDate: moment(result.end_day, "DDMMYYYY").tz("Australia/Sydney").hours(23),
                         startTime: sT,
                         endTime: eT,
                         length: len,
