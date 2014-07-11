@@ -36,7 +36,7 @@ exports.getTimetable = function(req, res) {
 
     function go(rooms) {
 
-        var today = moment();
+        var today = moment("18/03/14","DD/MM/YY");
 
 
         db.getRecords("", function(err, results) {
@@ -398,7 +398,9 @@ function updateHeading(today) {
         var room = tData[i];
         for (var x = 0; x < room.length; x++) {
             console.log(room[x]);
-            var r = moment(today).range(room[x].range.start, room[x].range.end);
+            var rS = room[x].range.start.zone('+1000');
+            var rE = room[x].range.end.zone('+1000');
+            var r = moment(today).range(rS, rE);
             if (r.contains(now)) {
 
                 if (room[x].e) {
