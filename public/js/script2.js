@@ -7,7 +7,6 @@ var timerId = setInterval(updateLine, 10000);
 
 function updateHeading(){
     for (var i = uData.length - 1; i >= 0; i--) {
-        
         $(uData[i].idSel).find('.heading').html(uData[i].html);
     };
 
@@ -22,7 +21,7 @@ function updateLine() {
     var time = $('.time').width();
     var d = endTime.diff(startTime, 'minutes');
     //every minute is 1680 divived by minutes
-    var minuteLength = 1680 / d;
+    var minuteLength = 1600 / d;
 
 
     var now = moment();

@@ -27,13 +27,13 @@ html
                 when e.segmentCount > 24
                   - sSize = 'large'
               if(e.e)
-                div(n=e.roomNo,class="block event "+sSize,style='width:'+(e.segmentCount*11.666666)+'px')
+                div(n=e.roomNo,class="block event "+sSize,style='width:'+(e.segmentCount*11.111111)+'px')
                   h1= e.starTime
                     span= ' to ' + e.endTime
                   p=e.e[0].alphaDigit + ' '
                     span=e.e[0].uosName
               else
-                div(n=e.roomNo,class="block "+sSize,style='width:'+(e.segmentCount*11.666666)+'px')
+                div(n=e.roomNo,class="block "+sSize,style='width:'+(e.segmentCount*11.111111)+'px')
                   h1= e.starTime
                     span= ' to ' + e.endTime
                   p All Access

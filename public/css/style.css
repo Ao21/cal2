@@ -16,7 +16,7 @@ body {
     color:#333;
 }
 .limited {
-    width:1900px;
+    width:1840px;
     height: 1080px;
 }
 h1 {
@@ -70,7 +70,7 @@ h1 {
     font-size:20px
 }
 .time {
-    width:1660px;
+    width:1600px;
     height:800px;
     position:absolute;
     left:273px
@@ -131,6 +131,6 @@ h1 {
     border-left:1px solid rgba(255, 255, 255, .5)
 }
 .timeLine {
-    width:1900px;
+    width:1920px;
     padding-top:50px
 }
