@@ -392,18 +392,15 @@ exports.getTimetable = function(req, res) {
 function updateHeading(today) {
     var a = [];
     for (var i = 0; i < tData.length; i++) {
-        var now = moment(today);
+        var now = moment(today).utc();
         var html = "";
         html += "<h1>Room " + tData[i][0].roomNo + "</h1><p>" + tData[i][0].room.replace('Wilkinson', "").replace(/[0-9]/g, '') + "<br>";
         var room = tData[i];
         for (var x = 0; x < room.length; x++) {
-            var rS = room[x].range.start.zone('+1000');
-            var rE = room[x].range.end.zone('+1000');
-                        console.log(room[x]);
-                        console.log(rS);
-                        console.log(rE);
-
-            var r = moment(today).range(rS, rE);
+            var rS = room[x].range.start.utc();
+            var rE = room[x].range.end.utc();
+            
+            var r = moment(now).range(rS, rE);
             if (r.contains(now)) {
 
                 if (room[x].e) {
