@@ -31,11 +31,11 @@ exports.getTimetable = function(req, res) {
         console.log(l);
         go(l);
 
-    });
+    })
 
     function go(rooms) {
 
-        var today = moment("22/03/2014", "DD/MM/YYYY");
+        var today = moment();
 
 
         db.getRecords("", function(err, results) {
@@ -230,7 +230,8 @@ exports.getTimetable = function(req, res) {
             if (xmlData[i].dayOfWeek === days[d] && xmlData[i].venue == room) {
                 var type = xmlData[i].frequency.trim();
                 if (type.localeCompare('Weekly') === 0) {
-                    console.log('Weekly');
+                    console.log('weekly');
+                    tempArray.push(xmlData[i]);
                 } else if (type.localeCompare('Fortnightly') === 0) {
                     var interval = moment(xmlData[i].startDate).recur().every(2).weeks();
                     if (interval.matches(today)) {

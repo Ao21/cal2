@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'ReplicaStdLight';
+    src: url('replicastdlight.eot');
+    src: url('replicastdlight.eot') format('embedded-opentype'),
+         url('replicastdlight.woff') format('woff'),
+         url('replicastdlight.ttf') format('truetype'),
+         url('replicastdlight.svg#ReplicaStdLight') format('svg');
+}

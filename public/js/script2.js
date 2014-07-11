@@ -14,7 +14,6 @@ function updateHeading() {
         html += "<h1>Room " + tData[i][0].roomNo + "</h1><p>" + tData[i][0].room.replace('Wilkinson', "").replace(/[0-9]/g, '') + "<br>";
         var room = tData[i];
         for (var x = 0; x < room.length; x++) {
-
             var r = moment().range(room[x].range.start, room[x].range.end);
             if (r.contains(now)) {
 
