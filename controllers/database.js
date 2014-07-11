@@ -87,7 +87,7 @@ exports.getAllRooms = function(records, callback) {
 
 
 exports.getTimetableById = function(id, callback) {
-    var sql = "SELECT * FROM ttimes WHERE id=?";
+    var sql = "SELECT * FROM tTimes WHERE id=?";
 
     async.series([
 
