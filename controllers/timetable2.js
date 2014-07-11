@@ -389,7 +389,7 @@ exports.getTimetable = function(req, res) {
     }
 
 
-function updateHeading() {
+function updateHeading(today) {
     var a = [];
     for (var i = 0; i < tData.length; i++) {
         //No Idea where the date bug is happening, but set it back by an hour and it works
