@@ -2,7 +2,7 @@ var mysql = require('mysql'),
     async = require('async');
 
 
-/*
+
 
 var client = mysql.createConnection({
     host: 'localhost',
@@ -15,9 +15,8 @@ var client = mysql.createConnection({
 });
 
 
-*/
 
-
+/*
 
 var client = mysql.createConnection({
     host: process.env.RDS_HOSTNAME,
@@ -27,6 +26,7 @@ var client = mysql.createConnection({
     database: 'mynode_db',
 
 })
+*/
 
 // Get records from a city
 exports.getRecords = function(city, callback) {
