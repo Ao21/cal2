@@ -6,7 +6,6 @@ var timerId = setInterval(updateLine, 10000);
 
 
 function updateHeading(){
-    console.log(uData);
     for (var i = uData.length - 1; i >= 0; i--) {
         
         $(uData[i].idSel).find('.heading').html(uData[i].html);
