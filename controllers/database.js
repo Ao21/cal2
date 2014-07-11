@@ -113,7 +113,7 @@ exports.getTimetableById = function(id, callback) {
 
 
 exports.getAllTimetables = function(city, callback) {
-    var sql = "SELECT * FROM ttimes";
+    var sql = "SELECT * FROM tTimes";
 
     async.series([
 
