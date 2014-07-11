@@ -3,7 +3,7 @@ var mysql = require('mysql'),
 
 
 
-
+/*
 var client = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -13,10 +13,10 @@ var client = mysql.createConnection({
     connectionLimit: 10,
     supportBigNumbers: true
 });
-/*
 
 
 
+*/
 
 var client = mysql.createConnection({
     host: process.env.RDS_HOSTNAME,
@@ -27,7 +27,7 @@ var client = mysql.createConnection({
 
 })
 
-*/
+
 // Get records from a city
 exports.getRecords = function(city, callback) {
     var sql = "SELECT * FROM timetable";
