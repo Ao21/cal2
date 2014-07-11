@@ -396,9 +396,8 @@ function updateHeading(today) {
         var html = "";
         html += "<h1>Room " + tData[i][0].roomNo + "</h1><p>" + tData[i][0].room.replace('Wilkinson', "").replace(/[0-9]/g, '') + "<br>";
         var room = tData[i];
+        console.log(tData);
         for (var x = 0; x < room.length; x++) {
-            console.log(room[x]);
-            console.log(now);
             var r = moment(today).range(room[x].range.start, room[x].range.end);
             if (r.contains(now)) {
 
