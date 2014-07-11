@@ -116,7 +116,7 @@ exports.getTimetable = function(req, res) {
 
         };
 
-        updateHeading();
+        updateHeading(today);
         console.log(uData);
 
 
@@ -393,12 +393,12 @@ function updateHeading() {
     var a = [];
     for (var i = 0; i < tData.length; i++) {
         //No Idea where the date bug is happening, but set it back by an hour and it works
-        var now = moment();
+        var now = moment(today);
         var html = "";
         html += "<h1>Room " + tData[i][0].roomNo + "</h1><p>" + tData[i][0].room.replace('Wilkinson', "").replace(/[0-9]/g, '') + "<br>";
         var room = tData[i];
         for (var x = 0; x < room.length; x++) {
-            var r = moment().range(room[x].range.start, room[x].range.end);
+            var r = moment(today).range(room[x].range.start, room[x].range.end);
             if (r.contains(now)) {
 
                 if (room[x].e) {
