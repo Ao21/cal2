@@ -1,6 +1,7 @@
 var db = require('../controllers/database');
 var moment = require('moment');
 require('moment-recur');
+require('moment-timezone');
 
 // Get records from a city
 exports.getTimetable = function(req, res) {
@@ -84,7 +85,10 @@ exports.getTimetable = function(req, res) {
 
 
                 var startDate = moment(result.start_day, "DDMMYYYY");
+                startDate = startDate.tz("Australia/Sydney");
                 var endDate = moment(result.end_day, "DDMMYYYY").hours(23);
+                endDate = endDate.tz("Australia/Sydney");
+
                 var dateRange = moment(today).range(startDate, endDate);
 
                 var venue = result.venue_name.trim();
