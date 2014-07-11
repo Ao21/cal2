@@ -5,38 +5,13 @@ var timerId = setInterval(updateLine, 10000);
 
 
 
-function updateHeading() {
-    var a = [];
-    for (var i = 0; i < tData.length; i++) {
-        //No Idea where the date bug is happening, but set it back by an hour and it works
-        var now = moment().subtract('hours', 1);
-        var html = "";
-        html += "<h1>Room " + tData[i][0].roomNo + "</h1><p>" + tData[i][0].room.replace('Wilkinson', "").replace(/[0-9]/g, '') + "<br>";
-        var room = tData[i];
-        for (var x = 0; x < room.length; x++) {
-            var r = moment().range(room[x].range.start, room[x].range.end);
-            if (r.contains(now)) {
-
-                if (room[x].e) {
-                    html += '<span class="occupied">Occupied</span> till ' + room[x].endTime;
-                } else {
-                    html += '<span class="free">Free</span>';
-                }
-
-
-            }
-
-        };
-        html += '</p>';
-        //a.push(html)
-        var idSel = '#' + tData[i][0].roomNo;
-
-        $(idSel).find('.heading').html(html);
-
-
-
-
+function updateHeading(){
+    console.log(uData);
+    for (var i = uData.length - 1; i >= 0; i--) {
+        
+        $(uData[i].idSel).find('.heading').html(uData[i].html);
     };
+
 
 
 }

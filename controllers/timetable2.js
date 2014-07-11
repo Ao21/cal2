@@ -10,6 +10,7 @@ exports.getTimetable = function(req, res) {
         times = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
         week = [],
         tData = [],
+        uData = [],        
         results;
 
     var roomArray = ['Wilkinson 269 Mac Lab', 'Wilkinson 261 Digital Media Lab', 'Wilkinson 262 General Access Laboratory', 'Wilkinson 268 Sentient Laboratory']
@@ -115,9 +116,13 @@ exports.getTimetable = function(req, res) {
 
         };
 
+        updateHeading();
+        console.log(uData);
+
 
         res.render('timetable2', {
             dataJson: JSON.stringify(tData),
+            uDataJson : JSON.stringify(uData),
             data: tData,
             rooms: rooms
         });
@@ -377,12 +382,57 @@ exports.getTimetable = function(req, res) {
         // createHtmlForDay(dayTimeLine, room);
 
         tData.push(dayTimeLine);
+        
 
 
 
     }
 
 
+function updateHeading() {
+    var a = [];
+    for (var i = 0; i < tData.length; i++) {
+        //No Idea where the date bug is happening, but set it back by an hour and it works
+        var now = moment();
+        var html = "";
+        html += "<h1>Room " + tData[i][0].roomNo + "</h1><p>" + tData[i][0].room.replace('Wilkinson', "").replace(/[0-9]/g, '') + "<br>";
+        var room = tData[i];
+        for (var x = 0; x < room.length; x++) {
+            var r = moment().range(room[x].range.start, room[x].range.end);
+            if (r.contains(now)) {
+
+                if (room[x].e) {
+                    html += '<span class="occupied">Occupied</span> till ' + room[x].endTime;
+                } else {
+                    html += '<span class="free">Free</span>';
+                }
+
+
+            }
+
+        };
+        html += '</p>';
+        //a.push(html)
+        var idSel = '#' + tData[i][0].roomNo;
+
+
+        var details={
+            idSel:idSel,
+            html:html
+        }
+        uData.push(details);
+
+
+
+        //$(idSel).find('.heading').html(html);
+
+
+
+
+    };
+
+
+}
 
 
 
