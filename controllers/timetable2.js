@@ -399,8 +399,8 @@ function updateHeading(today) {
         for (var x = 0; x < room.length; x++) {
             var rS = room[x].range.start.utc();
             var rE = room[x].range.end.utc();
-            
-            var r = moment(now).range(rS, rE);
+
+            var r = moment().range(rS, rE);
             if (r.contains(now)) {
 
                 if (room[x].e) {
