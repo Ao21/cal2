@@ -36,7 +36,7 @@ exports.getTimetable = function(req, res) {
 
     function go(rooms) {
 
-        var today = moment("18/03/14","DD/MM/YY");
+        var today = moment();
 
 
         db.getRecords("", function(err, results) {
@@ -392,17 +392,13 @@ exports.getTimetable = function(req, res) {
 function updateHeading(today) {
     var a = [];
     for (var i = 0; i < tData.length; i++) {
-        var now = moment(today).utc();
+        var now = moment(today);
         var html = "";
         html += "<h1>Room " + tData[i][0].roomNo + "</h1><p>" + tData[i][0].room.replace('Wilkinson', "").replace(/[0-9]/g, '') + "<br>";
         var room = tData[i];
         for (var x = 0; x < room.length; x++) {
-            var rS = room[x].range.start.utc();
-            var rE = room[x].range.end.utc();
-
-            var r = moment().range(rS, rE);
+            var r = moment().range(room[x].range.start, room[x].range.end);
             if (r.contains(now)) {
-
                 if (room[x].e) {
                     html += '<span class="occupied">Occupied</span> till ' + room[x].endTime;
                 } else {
