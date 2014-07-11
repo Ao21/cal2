@@ -2,7 +2,7 @@ var mysql = require('mysql'),
     async = require('async');
 
 
-
+/*
 var client = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -13,7 +13,7 @@ var client = mysql.createConnection({
     supportBigNumbers: true
 });
 
-/*
+*/
 
 
 
@@ -25,7 +25,7 @@ var client = mysql.createConnection({
     database: 'mynode_db',
 
 })
-*/
+
 
 
 // Get records from a city
