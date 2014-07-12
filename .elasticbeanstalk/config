@@ -12,4 +12,3 @@ RdsSourceSnapshotName=
 Region=ap-southeast-2
 ServiceEndpoint=https://elasticbeanstalk.ap-southeast-2.amazonaws.com
 SolutionStack=32bit Amazon Linux 2014.02 v1.0.1 running Node.js
-
