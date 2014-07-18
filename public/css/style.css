@@ -12,7 +12,7 @@
 
 body {
     background:#fafafa;
-    font-family:"Replica Std Light", proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:"ReplicaStdLight", 'proxima-nova', "Helvetica Neue", Helvetica, Arial, sans-serif;
     color:#333;
 }
 .limited {
@@ -23,12 +23,14 @@ h1 {
     font-weight:400;
     padding:0;
     margin:0;
-    line-height:1
+    line-height:1;
+    color:#464646;
 }
 .header {
-    height:140px;
+    height: 120px;
     position:relative;
-    padding:25px
+    padding: 12px;
+    padding-bottom: 0px;
 }
 .header h1 {
     font-size:72px
@@ -50,7 +52,7 @@ h1 {
 .day {
     margin-bottom:80px;
     float:left;
-    margin-left:25px
+    margin-left:0px
 }
 .small h1 span {
     display:none
@@ -59,15 +61,19 @@ h1 {
     display:none
 }
 .heading {
-    width:215px;
-    float:left
+    width:235px;
+    float:left;
+    margin-right:10px;
 }
 .heading h1 {
-    font-size:40px
+    font-size:44px;
+    text-align:right;
 }
 .heading p {
     margin:0;
-    font-size:20px
+    padding-left:25px;
+    font-size:20px;
+    text-align:right;
 }
 .time {
     width:1600px;
@@ -86,6 +92,8 @@ h1 {
     position:absolute;
     left:20px;
     top:0
+;
+    font-size: 72px;
 }
 .line h1.swap {
     left:-75px
@@ -132,10 +140,8 @@ h1 {
 }
 .timeLine {
     width:1920px;
-    padding-top:50px
-}
+    padding-top: 80px;}
 
 a.delete{
     text-align: right;
-
 }

@@ -37,7 +37,7 @@ exports.getTimetable = function(req, res) {
 
     function go(rooms) {
 
-        var today = moment().tz("Australia/Sydney");
+        var today = moment("26/03/2014","DD/MM/YYYY").tz("Australia/Sydney");
 
 
         db.getRecords("", function(err, results) {
