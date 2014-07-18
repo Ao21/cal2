@@ -134,3 +134,8 @@ h1 {
     width:1920px;
     padding-top:50px
 }
+
+a.delete{
+    text-align: right;
+
+}

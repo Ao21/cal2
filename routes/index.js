@@ -116,10 +116,10 @@ exports.createT = function(req, res) {
     }
 
 
-    db.createTimetable(object, function(err, res) {
-        if (err) {
-            res.send(500, "Server Error");
-            return;
-        }
+    db.createTimetable(object, function(err, result) {
+        res.send(200, "success");
+        
+
     })
+
 }

@@ -16,8 +16,8 @@ var client = mysql.createConnection({
 });
 
 
-*/
 
+*/
 
 var client = mysql.createConnection({
     host: process.env.RDS_HOSTNAME,
@@ -177,6 +177,30 @@ exports.insertRecords = function(city, callback) {
 };
 
 
+exports.deleteTimetable = function(req,res ,callback){
+        console.log(req.params.id);
+    var sql = "DELETE from ttimes WHERE id = ? ";
+
+async.series([
+
+        
+        function clear(callback) {
+            client.query(sql, req.params.id, callback);
+        }
+
+
+    ], function(err, results) {
+        if (err) {
+            console.log('Exception initializing database.');
+            res.redirect('/');
+        } else {
+            console.log('Database initialization complete.');
+             res.redirect('/');
+        }
+    });
+
+}
+
 
 exports.createTimetable = function(v, callback) {
 
@@ -198,9 +222,10 @@ exports.createTimetable = function(v, callback) {
     ], function(err, results) {
         if (err) {
             console.log('Exception initializing database.');
-            throw err;
+            callback(results);
         } else {
             console.log('Database initialization complete.');
+
         }
     });
 

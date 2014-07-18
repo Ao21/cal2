@@ -56,6 +56,7 @@ app.post('/uploadcsv', uploadcsv.upload);
 app.get('/upload', routes.upload);
 app.get('/createTimetable', routes.createATimetable);
 app.post('/createTimetable', routes.createT);
+app.get('/tables/:id/del', db.deleteTimetable);
 
 app.get('/tables/:id', timeTab2.getTimetable);
 

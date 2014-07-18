@@ -70,19 +70,22 @@ $(document).ready(function() {
 
 
 
-
-
-
-
-
         $.ajax({
             type: "POST",
             url: '/createTimetable',
             data: object,
-            dataType: 'json'
+            dataType: 'json',
+            error:function(data){
+                console.log('hi');
+                
+            },
+            success: function(data){
+                console.log('gi');
+                window.location = "../"
+            }
         });
 
-
+window.location.href = "../";
     })
 
 
