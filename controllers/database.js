@@ -145,12 +145,7 @@ exports.insertRecords = function(city, callback) {
 
     async.series([
 
-        function clear(callback) {
-            client.query('DROP DATABASE IF EXISTS mynode_db', callback);
-        },
-        function create_db(callback) {
-            client.query('CREATE DATABASE mynode_db', callback);
-        },
+
         function use_db(callback) {
             client.query('USE mynode_db', callback);
         },
