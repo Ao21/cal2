@@ -77,13 +77,15 @@ $(document).ready(function() {
             dataType: 'json',
             error:function(data){
                 console.log('hi');
+                window.location = "../";
                 
             },
             success: function(data){
                 console.log('gi');
-                window.location = "../"
+                window.location = "../";
             }
         });
+        window.location.href = "../";
 
     })
 
