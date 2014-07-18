@@ -1,9 +1,8 @@
 var mysql = require('mysql'),
     async = require('async');
 
+
 /*
-
-
 
 var client = mysql.createConnection({
     host: 'localhost',
@@ -15,9 +14,10 @@ var client = mysql.createConnection({
     supportBigNumbers: true
 });
 
-
-
 */
+
+
+
 
 var client = mysql.createConnection({
     host: process.env.RDS_HOSTNAME,
@@ -179,7 +179,7 @@ exports.insertRecords = function(city, callback) {
 
 exports.deleteTimetable = function(req,res ,callback){
         console.log(req.params.id);
-    var sql = "DELETE from ttimes WHERE id = ? ";
+    var sql = "DELETE from tTimes WHERE id = ? ";
 
 async.series([
 
