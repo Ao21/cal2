@@ -37,7 +37,7 @@ exports.getTimetable = function(req, res) {
 
     function go(rooms) {
 
-        var today = moment("26/03/2014","DD/MM/YYYY").tz("Australia/Sydney");
+        var today = moment("26/03/2014 14:01","DD/MM/YYYY hh:mm").tz("Australia/Sydney");
 
 
         db.getRecords("", function(err, results) {
@@ -396,15 +396,21 @@ exports.getTimetable = function(req, res) {
 function updateHeading(today) {
     var a = [];
     for (var i = 0; i < tData.length; i++) {
+
         var now = moment(today).tz("Australia/Sydney");
         var html = "";
         html += "<h1>Room " + tData[i][0].roomNo + "</h1><p>" + tData[i][0].room.replace('Wilkinson', "").replace(/[0-9]/g, '') + "<br>";
         var room = tData[i];
         for (var x = 0; x < room.length; x++) {
-            var r = moment().range(room[x].range.start, room[x].range.end);
-            console.log(now);
-            console.log(r);
+            console.log();
+            var start = moment(room[x].range.start).tz("Australia/Sydney");
+            var end =moment(room[x].range.end).tz("Australia/Sydney");
+
+            var r = moment().range(start, end);
+
             if (r.contains(now)) {
+                
+                console.log();
                 if (room[x].e) {
                     html += '<span class="occupied">Occupied</span> till ' + room[x].endTime;
                 } else {
