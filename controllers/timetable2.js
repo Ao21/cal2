@@ -23,7 +23,8 @@ exports.getTimetable = function(req, res) {
             res.send(500, "Server Error");
             return;
         }
-        // Respond with results as JSON
+        // Respond with results as JSON'
+        console.log(results);
         if(results){
                 var r = JSON.parse(results[0].rooms);
                 var l = [];
