@@ -2,7 +2,6 @@ var mysql = require('mysql'),
     async = require('async');
 
 
-/*
 
 var client = mysql.createConnection({
     host: 'localhost',
@@ -14,8 +13,8 @@ var client = mysql.createConnection({
     supportBigNumbers: true
 });
 
-*/
 
+/*
 
 
 
@@ -28,6 +27,7 @@ var client = mysql.createConnection({
 
 })
 
+*/
 // Get records from a city
 exports.getRecords = function(city, callback) {
     var sql = "SELECT * FROM timetable";
