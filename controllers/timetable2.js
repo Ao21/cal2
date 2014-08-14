@@ -24,14 +24,14 @@ exports.getTimetable = function(req, res) {
             return;
         }
         // Respond with results as JSON
-        console.log(JSON.parse(results[0].rooms));
-        var r = JSON.parse(results[0].rooms);
-        var l = [];
-        for (var i = r.length - 1; i >= 0; i--) {
-            l.push(r[i].room);
-        };
-        console.log(l);
-        go(l);
+        if(results){
+                var r = JSON.parse(results[0].rooms);
+                var l = [];
+                for (var i = r.length - 1; i >= 0; i--) {
+                    l.push(r[i].room);
+                };
+                console.log(l);
+                go(l);}
 
     })
 
