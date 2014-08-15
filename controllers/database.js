@@ -19,10 +19,10 @@ var client = mysql.createConnection({
 */
 
 var client = mysql.createConnection({
-    host: process.env.RDS_HOSTNAME,
-    user: process.env.RDS_USERNAME,
-    password: process.env.RDS_PASSWORD,
-    port: process.env.RDS_PORT,
+    host: 'aaajp1hk42gku6.cdum9jmmx8jv.ap-southeast-2.rds.amazonaws.com',
+    user: 'ebroot',
+    password: 'Ao21Ao21',
+    port: '3306',
     database: 'mynode_db',
 
 })
