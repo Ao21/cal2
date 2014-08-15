@@ -24,15 +24,17 @@ exports.getTimetable = function(req, res) {
             return;
         }
         // Respond with results as JSON'
-        console.log(results);
+       
         if(results){
                 var r = JSON.parse(results[0].rooms);
+                console.log(r);
                 var l = [];
-                for (var i = r.length - 1; i >= 0; i--) {
+                /*for (var i = r.length - 1; i >= 0; i--) {
                     l.push(r[i].room);
-                };
-                console.log(l);
-                go(l);}
+                };*/
+                
+                //go(l);
+            }
 
     })
 
