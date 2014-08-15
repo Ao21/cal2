@@ -30,14 +30,13 @@ exports.index = function(req, res) {
 
 exports.renderTimetable = function(req, res) {
 
-    db.getTimetableById(req.params.id, function(err, results) {
+    /*db.getTimetableById(req.params.id, function(err, results) {
         if (err) {
             res.send(500, "Server Error");
             return;
         }
         // Respond with results as JSON
 
-        console.log(results);
 
 
 
@@ -47,7 +46,7 @@ exports.renderTimetable = function(req, res) {
             data: results,
             title: 'Create a Timetable'
         });
-    });
+    });*/
 
 
 }
