@@ -29,11 +29,11 @@ exports.getTimetable = function(req, res) {
                 var r = JSON.parse(results[0].rooms);
                 console.log(r);
                 var l = [];
-                /*for (var i = r.length - 1; i >= 0; i--) {
+                for (var i = r.length - 1; i >= 0; i--) {
                     l.push(r[i].room);
-                };*/
+                };
                 
-                //go(l);
+                go(l);
             }
 
     })
