@@ -2,7 +2,6 @@ var mysql = require('mysql'),
     async = require('async');
 
 
-/*
 var client = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -16,7 +15,8 @@ var client = mysql.createConnection({
 
 
 
-*/
+
+/*
 
 var client = mysql.createConnection({
     host: 'aaajp1hk42gku6.cdum9jmmx8jv.ap-southeast-2.rds.amazonaws.com',
@@ -26,7 +26,7 @@ var client = mysql.createConnection({
     database: 'mynode_db',
 
 })
-
+*/
 
 // Get records from a city
 exports.getRecords = function(city, callback) {
@@ -87,7 +87,7 @@ exports.getAllRooms = function(records, callback) {
 
 
 exports.getTimetableById = function(id, callback) {
-    var sql = "SELECT * FROM tTimes WHERE id=?";
+    var sql = "SELECT * FROM ttimes WHERE id=?";
 
     async.series([
 
@@ -113,7 +113,7 @@ exports.getTimetableById = function(id, callback) {
 
 
 exports.getAllTimetables = function(city, callback) {
-    var sql = "SELECT * FROM tTimes";
+    var sql = "SELECT * FROM ttimes";
 
     async.series([
 
@@ -174,7 +174,7 @@ exports.insertRecords = function(city, callback) {
 
 exports.deleteTimetable = function(req,res ,callback){
         console.log(req.params.id);
-    var sql = "DELETE from tTimes WHERE id = ? ";
+    var sql = "DELETE from ttimes WHERE id = ? ";
 
 async.series([
 
@@ -200,14 +200,14 @@ async.series([
 exports.createTimetable = function(v, callback) {
 
 
-    var sql = "INSERT INTO tTimes SET ? ";
+    var sql = "INSERT INTO ttimes SET ? ";
     console.log(v);
 
 
     async.series([
 
         function go(callback) {
-            client.query('CREATE TABLE IF NOT EXISTS tTimes (' + 'name VARCHAR(255), ' + 'rooms TEXT, ' + 'ID MEDIUMINT NOT NULL AUTO_INCREMENT, ' + 'PRIMARY KEY(ID))', callback);
+            client.query('CREATE TABLE IF NOT EXISTS ttimes (' + 'name VARCHAR(255), ' + 'rooms TEXT, ' + 'ID MEDIUMINT NOT NULL AUTO_INCREMENT, ' + 'PRIMARY KEY(ID))', callback);
         },
         function clear(callback) {
             client.query(sql, [v], callback);
